@@ -1,0 +1,13 @@
+server:
+  # The address where the HTTP server will be listening.
+  address: 0.0.0.0
+  # The port where the HTTP server will be listening.
+  port: 9091
+  #swagger rest path
+  swagger_url: swagger.yml
+
+middleware:
+  # The address where the HTTP server will be listening.
+  address: internal
+  # The port where the HTTP server will be listening.
+  port: 9092
