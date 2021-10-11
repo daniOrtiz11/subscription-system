@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./resources/subscription_dump.sql:/docker-entrypoint-initdb.d/subscription_dump.sql
+  rest:
+    build: .
+    ports:
+      - "9092:9092"
+
