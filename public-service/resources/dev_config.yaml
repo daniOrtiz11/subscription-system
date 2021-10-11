@@ -8,6 +8,6 @@ server:
 
 middleware:
   # The address where the HTTP server will be listening.
-  address: internal
+  address: middleware
   # The port where the HTTP server will be listening.
   port: 9092

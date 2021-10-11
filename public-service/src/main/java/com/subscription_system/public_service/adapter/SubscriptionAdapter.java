@@ -14,7 +14,7 @@ public class SubscriptionAdapter {
     subscription.setConsent((Boolean) jsonObjectReceived.getValue("consent"));
     subscription.setEmail((String) jsonObjectReceived.getValue("email"));
     subscription.setGender((String) jsonObjectReceived.getValue("gender"));
-    subscription.setNewsletterId((String) jsonObjectReceived.getValue("newsletterId"));
+    subscription.setNewsletterId((String) jsonObjectReceived.getValue("newsletter_id"));
     return subscription;
   }
 

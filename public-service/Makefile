@@ -12,15 +12,15 @@ help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 .PHONY: public-service-up
-backend-challenge-up: ## Command to run the application.
+public-service-up: ## Command to run the application.
 		cp resources/dev_config.yaml src/main/resources/config.yaml
 		mvn clean install -DskipTests
 		docker-compose -f docker-compose.yml  up --build
 
 .PHONY: public-service-down
-backend-challenge-down: ## Command to shut down the application.
+public-service-down: ## Command to shut down the application.
 		docker-compose -f docker-compose.yml  down
 
-.PHONY: public-service-up-test
-backend-challenge-test: ## Command to test the application.
-    mvn clean test
+.PHONY: public-service-test
+public-service-test: ## Command to test the application.
+		mvn clean test

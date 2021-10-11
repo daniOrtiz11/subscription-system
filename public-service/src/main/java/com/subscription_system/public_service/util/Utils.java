@@ -2,7 +2,6 @@ package com.subscription_system.public_service.util;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
-import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.lang.reflect.Method;

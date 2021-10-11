@@ -25,8 +25,9 @@
     <apache-commons.version>1.7</apache-commons.version>
     <uri-builder.version>2.0.0</uri-builder.version>
 
-    <main.verticle>com.subscription-system.public-service.Main</main.verticle>
-    <main.class>com.subscription-system.public-service.Main</main.class>    <launcher.class>io.vertx.core.Launcher</launcher.class>
+    <main.verticle>com.subscription_system.public_service.Main</main.verticle>
+    <main.class>com.subscription_system.public_service.Main</main.class>
+    <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 
   <dependencyManagement>

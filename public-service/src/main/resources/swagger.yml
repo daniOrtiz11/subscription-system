@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 items:
                   $ref: '#/components/schemas/SubscriptionResponse'
 
@@ -91,11 +91,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 items:
                   $ref: '#/components/schemas/SubscriptionResponse'
 
-  /allSubscription:
+  /all:
     get:
       tags:
         - Subscription
@@ -170,7 +170,7 @@ components:
         - email
         - birth_date
         - consent
-        - newsletterId
+        - newsletter_id
       properties:
         email:
           type: string
@@ -183,13 +183,13 @@ components:
           format: date
         consent:
           type: boolean
-        newsletterId:
+        newsletter_id:
           type: string
 
     SubscriptionResponse:
       type: object
       required:
-        - newsletterId
+        - newsletter_id
       properties:
         newsletterId:
           type: string
