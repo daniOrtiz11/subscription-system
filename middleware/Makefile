@@ -15,11 +15,11 @@ help: ## Show this help.
 middleware-up: ## Command to run the application.
 		cp resources/dev_config.yaml src/main/resources/config.yaml
 		mvn clean install -DskipTests
-		docker-compose -f docker-compose.yml  up --build
+		docker-compose -f docker-compose_standalone.yml  up --build
 
 .PHONY: middleware-down
 middleware-down: ## Command to shut down the application.
-		docker-compose -f docker-compose.yml  down
+		docker-compose -f docker-compose_standalone.yml  down
 
 .PHONY: middleware-test
 middleware-test: ## Command to test the application.
