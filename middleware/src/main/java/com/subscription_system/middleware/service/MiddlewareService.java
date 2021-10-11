@@ -32,7 +32,7 @@ public class MiddlewareService implements Service {
     String channelService =  Utils.generateChannel("create", CH_SUFFIX);
     this.storage.insertSubscription(subscription, channelService);
     eventBus.consumer(channelService, resultCreate -> {
-      if (resultCreate != null) {
+      if (resultCreate != null && resultCreate.body() != null) {
         SubscriptionResponse subscriptionResponse = new SubscriptionResponse((String) resultCreate.body());
         eventHandlerBus.request(channel, SubscriptionResponseAdapter.toJsonAdapter(subscriptionResponse));
       } else {

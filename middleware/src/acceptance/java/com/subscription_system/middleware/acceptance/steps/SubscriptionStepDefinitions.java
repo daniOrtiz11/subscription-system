@@ -74,7 +74,7 @@ public class SubscriptionStepDefinitions {
   public void checkAll() {
     HashMap<String, String> params = new HashMap<>();
     params.put("email", (String) "any@gmail.com");
-    request = builderGetPost("/allSubscription", params);
+    request = builderGetPost("/all", params);
   }
 
 

@@ -85,7 +85,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SubscriptionResponse'
 
-  /allSubscription:
+  /all:
     get:
       tags:
         - Subscription
