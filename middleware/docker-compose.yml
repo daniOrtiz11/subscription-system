@@ -7,16 +7,16 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: user
       POSTGRES_PASSWORD: example
-    ports:
-      - "5431:5432"
+    expose:
+      - "5432"
     volumes:
       - ./resources/subscription_dump.sql:/docker-entrypoint-initdb.d/subscription_dump.sql
     networks:
       - my-proxy-net
   middleware:
     build: .
-    ports:
-      - "9092:9092"
+    expose:
+      - "9092"
     networks:
       - my-proxy-net
 
