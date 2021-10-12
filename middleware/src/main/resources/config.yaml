@@ -14,3 +14,9 @@ db:
   db: postgres
   schema: subscription-sch
   subscription_table: SUBSCRIPTIONS
+
+kafka:
+  enabled: true
+  topic: email
+  bootstrap_server_config: broker:29092
+  client_id: middleware

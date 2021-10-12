@@ -1,4 +1,4 @@
-# Middleware
+# Email Notifier
 
 [![Alt text](https://img.shields.io/badge/vert.x-4.1.4-purple.svg)](https://vertx.io)
 
@@ -10,5 +10,4 @@
 
 ## Summary
 
-The main function of the service is to expose an internal API to handle the storage and send the notification to
-send an email via Kafka.
+The main function of the service is to consume  events from Kafka and send (dummy) emails.

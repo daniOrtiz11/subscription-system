@@ -11,4 +11,5 @@ public interface Service {
   void cancel(String email, String subscriptionId, String channel);
   void getDetail(String email, String subscriptionId, String channel);
   void getAll(String email, String channel);
+  void notifyEmailService(String email, String newsletter_id, boolean created);
 }

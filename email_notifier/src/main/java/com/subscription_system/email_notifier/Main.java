@@ -1,8 +1,7 @@
-package com.subscription_system.middleware;
+package com.subscription_system.email_notifier;
 
-import com.subscription_system.middleware.kafka.KafkaProducer;
-import com.subscription_system.middleware.server.HttpServer;
-import com.subscription_system.middleware.util.Utils;
+import com.subscription_system.email_notifier.kafka.KafkaConsumer;
+import com.subscription_system.email_notifier.util.Utils;
 import io.netty.channel.DefaultChannelId;
 import io.vertx.config.ConfigRetriever;
 import io.vertx.config.ConfigRetrieverOptions;
@@ -21,7 +20,12 @@ public class Main {
   private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
   public static void main(String[] args) {
-    LOGGER.info("Hello! Starting middleware app!");
+    LOGGER.info("Hello! Starting email_notifier app!");
+    DefaultChannelId.newInstance();
+    DeploymentOptions defaultDeplOpt = new DeploymentOptions();
+    defaultDeplOpt.setInstances(1);
+    VertxOptions vertxOptions = new VertxOptions();
+    final Vertx vertx = Vertx.vertx(vertxOptions);
     String configPath = "config.yaml";
     ConfigStoreOptions store;
     store = new ConfigStoreOptions()
@@ -30,24 +34,13 @@ public class Main {
       .setConfig(new JsonObject()
         .put("path", configPath)
       );
-    start(store);
-  }
-
-  public static void start(ConfigStoreOptions store) {
-    DefaultChannelId.newInstance();
-    DeploymentOptions defaultDeplOpt = new DeploymentOptions();
-    defaultDeplOpt.setInstances(1);
-    VertxOptions vertxOptions = new VertxOptions();
-    final Vertx vertx = Vertx.vertx(vertxOptions);
     ConfigRetriever retriever = ConfigRetriever.create(vertx,
       new ConfigRetrieverOptions().addStore(store));
     retriever.getConfig(json -> {
       if (json.succeeded()) {
         Utils.setProps(json.result());
-        vertx.deployVerticle(HttpServer.class.getName(), defaultDeplOpt);
-        vertx.deployVerticle(KafkaProducer.class.getName(), defaultDeplOpt);
+        vertx.deployVerticle(KafkaConsumer.class.getName(), defaultDeplOpt);
       }
     });
   }
-
 }

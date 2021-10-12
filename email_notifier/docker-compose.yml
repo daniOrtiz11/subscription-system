@@ -1,0 +1,13 @@
+version: '3'
+services:
+  consumer:
+    build: .
+    networks:
+      - my-proxy-net
+
+networks:
+  my-proxy-net:
+    external:
+      name: custom_network
+
+
