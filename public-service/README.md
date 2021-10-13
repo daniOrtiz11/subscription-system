@@ -10,4 +10,4 @@
 
 ## Summary
 
-The main function of the service is to expose an API based on the business rules include in the pdf (not attached).
+The main function of the service is to expose an API based on the business rules.
