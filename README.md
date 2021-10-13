@@ -66,12 +66,12 @@ A request to cancel a subscription by subscription and email (indicates as heade
 
 The id is returned as a response in case of success.
 
-### /subscription/subscription_id
+#### /subscription/subscription_id
 A request to get a subscription by subscription and email (indicates as header).
 
 The subscription is returned as a response in case of success.
 
-### /all
+#### /all
 A request to get a set of subscriptions by email (indicates as header).
 
 The set of subscriptions is returned as a response in case of success.
