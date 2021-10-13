@@ -1,0 +1,10 @@
+kafka:
+  #simple kafka config to test
+  topic: email
+  bootstrap_server_config: broker:29092
+  group_id: consumer-notifier-group
+  client_id: email_notifier
+  auto_commit_interval : 1000
+  auto_commit: true
+  consumer_mode: batch
+  poll_time: 3000

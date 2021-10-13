@@ -1,0 +1,8 @@
+  {
+    "email":"postman@xxx.com",
+    "name":"test",
+    "gender":"male",
+    "consent":true,
+    "birth_date":"1999-07-16",
+    "newsletter_id": "2"
+  }

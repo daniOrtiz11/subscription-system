@@ -1,0 +1,22 @@
+server:
+  # The address where the HTTP server will be listening.
+  address: 0.0.0.0
+  # The port where the HTTP server will be listening.
+  port: 9092
+  #swagger rest path
+  swagger_url: swagger.yml
+
+db:
+  port: 5432
+  host: db
+  user: user
+  pass: example
+  db: postgres
+  schema: subscription-sch
+  subscription_table: SUBSCRIPTIONS
+
+kafka:
+  enabled: true
+  topic: email
+  bootstrap_server_config: broker:29092
+  client_id: middleware

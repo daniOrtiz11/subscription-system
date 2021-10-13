@@ -1,0 +1,177 @@
+openapi: 3.0.1
+info:
+  title: Private Middleware API
+  description: Private Middleware API for Middleware Service APP
+  termsOfService: 'https://swagger.io/tools/swaggerhub/'
+  contact:
+    email: xxxx@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 2.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: 'http://localhost:8080'
+    description: local enviroment
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Just a health check to verify the service status
+      operationId: getHealthCheckRequest
+      responses:
+        200:
+          description: successfull healtch check
+          content: {}
+
+  /subscription:
+    post:
+      tags:
+        - Subscription
+      summary: Create a subscription
+      description: Create a subscription
+      operationId: postCreateSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+
+  /cancel:
+    delete:
+      tags:
+        - Subscription
+      summary: Cancel a subscription
+      description: Cancel a subscription
+      operationId: deleteCancelSubscription
+      parameters:
+        - name: newsletter_id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+
+  /all:
+    get:
+      tags:
+        - Subscription
+      summary: Get all subscription from user
+      description: Get all subscription from user
+      operationId: getAllSubscription
+      parameters:
+        - name: email
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionResponse'
+        405:
+          description: invalid input
+          content: {}
+
+  /detail:
+    get:
+      tags:
+        - Subscription
+      summary: Get a subscription
+      description: Get a subscription detail
+      operationId: getDetailSubscription
+      parameters:
+        - name: newsletter_id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Subscription'
+
+components:
+  schemas:
+    Subscription:
+      type: object
+      required:
+        - email
+        - birth_date
+        - consent
+        - newsletter_id
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        gender:
+          type: string
+        birth_date:
+          type: string
+          format: date
+        consent:
+          type: boolean
+        newsletter_id:
+          type: string
+
+    SubscriptionResponse:
+      type: object
+      required:
+        - newsletter_id
+      properties:
+        newsletter_id:
+          type: string
+
+
