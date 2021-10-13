@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "96abd287-d95e-4611-a905-54464b652f35",
+		"name": "subscription-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "middleware",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "0.0.0.0:9092/health",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9092",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"email\":\"postman@xxx.com\",\n    \"name\":\"test\",\n    \"gender\":\"male\",\n    \"consent\":true,\n    \"birth_date\":\"1999-07-16\",\n    \"newsletter_id\": \"2\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:9092/subscription",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9092",
+							"path": [
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel subscription",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							},
+							{
+								"key": "newsletter_id",
+								"value": "2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9092/cancel",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9092",
+							"path": [
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							},
+							{
+								"key": "newsletter_id",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9092/detail",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9092",
+							"path": [
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9092/all",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9092",
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "public-service",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "0.0.0.0:9091/health",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9091",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							},
+							{
+								"key": "access_token",
+								"value": "XXXXXXXXXXXXXXX",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9091/subscription/2",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9091",
+							"path": [
+								"subscription",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access_token",
+								"value": "XXXXXXXXXXXXXXX",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"email\":\"postman@xxx.com\",\n    \"name\":\"test\",\n    \"gender\":\"male\",\n    \"birth_date\":\"1999-07-16\",\n    \"consent\":true,\n    \"newsletter_id\": \"2\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "0.0.0.0:9091/subscription",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9091",
+							"path": [
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel subscription",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							},
+							{
+								"key": "access_token",
+								"value": "XXXXXXXXXXXXXXX",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9091/cancel/2",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9091",
+							"path": [
+								"cancel",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "email",
+								"value": "postman@xxx.com",
+								"type": "text"
+							},
+							{
+								"key": "access_token",
+								"value": "XXXXXXXXXXXXXXX",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "0.0.0.0:9091/all",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "9091",
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
